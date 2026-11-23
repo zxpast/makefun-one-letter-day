@@ -50,8 +50,10 @@ const LETTER = "I";
 // was chosen, so it is written down here where a reviewer can see it.
 const WORD_BEHIND_IT = "inbox-zero";
 
-// Where the grader reads the entry from.
-const OUTPUT_PATH = "/output/entry.txt";
+// Where the grader reads the entry from. MAKEFUN_OUTPUT_DIR lets a
+// local test point the output elsewhere; the grader uses /output.
+const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const OUTPUT_PATH = path.join(OUTPUT_DIR, "entry.txt");
 
 // A letter only counts if it is exactly one character from A to Z.
 function isSingleLetter(text: string): boolean {
